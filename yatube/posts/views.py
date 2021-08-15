@@ -1,9 +1,16 @@
-from django.http import HttpResponse
+from django.shortcuts import render
+
+context = {
+        'title': 'Это главная страница проекта Yatube',
+        'text': 'Здесь будет информация о группах проекта'
+        }
 
 
 def index(request):
-    return HttpResponse('Главная страница')
+    template = 'posts/index.html'
+    return render(request, template, context)
 
 
 def group_posts(request, slug):
-    return HttpResponse(f'Посты группы {slug}')
+    template = 'posts/group_list.html'
+    return render(request, template, context)
